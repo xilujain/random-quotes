@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body class="bg-gray-800">
+    <main class="grid justify-center gap-8">
+        <div class="bg-slate-50 h-96 w-96 mt-8 rounded-2xl drop-shadow-md">
+            <h1 class="text-center p-8 text-gray-400" id="quote">Health is the greatest possession.
+                Contentment is the greatest treasure. Confidence is the greatest friend. Non-being is the greatest joy.</h1>
+        </div>
+        <button class="bg-emerald-700 p-4 rounded-lg text-lg" id="another-quote" onclick=givingOtherQuote()>New quote</button>
+    </main>
+
+    <script src="../node_modules/axios/dist/axios.min.js">
+        import axios from 'axios';
+    </script>
+    <script src="script.js"></script>
+    </script>
+</body>
+</html>
