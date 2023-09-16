@@ -5,20 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quotes</title>
     <link rel="stylesheet" href="output.css">
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
 </head>
+
 <body class="bg-gray-800">
     <main class="grid justify-center gap-8">
         <div class="bg-slate-50 h-96 w-96 mt-8 rounded-2xl drop-shadow-md">
             <h1 class="text-center p-8 text-gray-400" id="quote">Health is the greatest possession.
                 Contentment is the greatest treasure. Confidence is the greatest friend. Non-being is the greatest joy.</h1>
         </div>
-        <button class="bg-emerald-700 p-4 rounded-lg text-lg" id="another-quote" onclick=givingOtherQuote()>New quote</button>
+        <button class="bg-emerald-700 p-4 rounded-lg text-lg" id="another-quote">New quote</button>
     </main>
-
-    <script src="../node_modules/axios/dist/axios.min.js">
-        import axios from 'axios';
-    </script>
-    <script src="script.js"></script>
+    <script>
+        document.getElementById("another-quote").addEventListener("click", () => {
+            axios.get('https://quotes15.p.rapidapi.com/quotes/random/', {
+                headers: {
+                    'X-RapidAPI-Key': '721731d5b6msh8e07aed407d120cp16e35fjsna437f99b79c6',
+                    'X-RapidAPI-Host': 'quotes15.p.rapidapi.com'
+                }
+            })
+            .then(function (response) {
+                document.getElementById('another-quote').addEventListener('click', () => document.getElementById('quote').innerHTML = response.data.content )
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        })
     </script>
 </body>
 </html>
