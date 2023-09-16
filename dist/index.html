@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quotes</title>
     <link rel="stylesheet" href="output.css">
-    <script src="../node_modules/axios/dist/axios.min.js"></script>
 </head>
 
 <body class="bg-gray-800">
@@ -18,16 +17,19 @@
     </main>
     <script>
         document.getElementById("another-quote").addEventListener("click", () => {
-            axios.get('https://quotes15.p.rapidapi.com/quotes/random/', {
-                headers: {
+            fetch("https://quotes15.p.rapidapi.com/quotes/random/", {
+                "method": "GET",
+                "headers": {
                     'X-RapidAPI-Key': '721731d5b6msh8e07aed407d120cp16e35fjsna437f99b79c6',
                     'X-RapidAPI-Host': 'quotes15.p.rapidapi.com'
                 }
             })
-            .then(function (response) {
-                document.getElementById('another-quote').addEventListener('click', () => document.getElementById('quote').innerHTML = response.data.content )
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                document.getElementById('another-quote').addEventListener('click', () => document.getElementById('quote').innerHTML = response.content )
             })
-            .catch(function (error) {
+            .catch (error => {
                 console.log(error);
             });
         })
