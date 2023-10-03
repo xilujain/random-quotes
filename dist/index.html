@@ -15,23 +15,7 @@
         </div>
         <button class="bg-emerald-700 p-4 rounded-lg text-lg" id="another-quote">New quote</button>
     </main>
-    <script>
-        document.getElementById("another-quote").addEventListener("click", () => {
-            fetch("https://quotes15.p.rapidapi.com/quotes/random/", {
-                "method": "GET",
-                "headers": {
-                    'X-RapidAPI-Key': '721731d5b6msh8e07aed407d120cp16e35fjsna437f99b79c6',
-                    'X-RapidAPI-Host': 'quotes15.p.rapidapi.com'
-                }
-            })
-            .then(response => response.json())
-            .then(response => {
-                document.getElementById('another-quote').addEventListener('click', () => document.getElementById('quote').innerHTML = response.content )
-            })
-            .catch (error => {
-                console.log(error);
-            });
-        })
-    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
