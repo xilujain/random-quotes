@@ -1,11 +1,13 @@
+import { api_key, api_host } from "./api_key";
+
 let btnQuote = document.getElementById("another-quote").addEventListener("click", quotes_api)
 
 function quotes_api(){
     fetch("https://quotes15.p.rapidapi.com/quotes/random/", {
         "method": "GET",
         "headers": {
-            'X-RapidAPI-Key': '721731d5b6msh8e07aed407d120cp16e35fjsna437f99b79c6',
-            'X-RapidAPI-Host': 'quotes15.p.rapidapi.com'
+            'X-RapidAPI-Key': api_key,
+            'X-RapidAPI-Host': api_host
         }
     })
     .then(response => response.json())
